@@ -3876,12 +3876,12 @@ td.dataTables_empty {
   float: left;
   width: 100%;
   min-height: 100%;
-  background: url("../img/bg.png") left top repeat #33414e;
+  background: url("../img/bg.png") left top repeat #fff;
 }
 .login-container .login-box {
   width: 400px;
   margin: 0px auto;
-  padding-top: 100px;
+  padding-top: 0px;
 }
 .login-container .login-box .login-logo {
   background: url("../img/logo.png") top center no-repeat;
@@ -3893,7 +3893,7 @@ td.dataTables_empty {
 .login-container .login-box .login-body {
   width: 100%;
   float: left;
-  background: rgba(255, 255, 255, 0.1);
+  background: #29343f;
   padding: 20px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

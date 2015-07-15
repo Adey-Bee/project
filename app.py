@@ -19,33 +19,27 @@ db = SQLAlchemy(app)
 
 @app.route('/dashboard')
 def dashboard():
-	users = db.session.query(User).all()
+	users = db.session.query(User).order_by(User.name)
 	return render_template("dashboard.html", users=users)#this is a tempalte page
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-
-
-
-
-	# name = request.form['name']
-	# phone_number = request.form['phone_number']
-	# email = request.form['email']
-	# address = request.form['address']
-	# table = request.form['table']
-	# # if not name or not phone_number or not email or not address or not table:
-	# # 	flash("All fields are required. Please try again.")
-	# # 	return redirect(url_for('success'))
-	# # else:
-	# db.session.add(name)
-	# db.session.add(phone_number)
-	# db.session.add(email)
-	# db.session.add(address)
-	# db.session.add(table)
-	# db.session.commit()
-	# db.session.close()
-	# flash('New entry was successfully posted!')
-	# return redirect(url_for('success'))
+	error = None
+	if request.method == 'POST':
+		name = request.form['name']
+		phone_number = request.form['phone_number']
+		email = request.form['email']
+		address = request.form['address']
+		table = request.form['table']
+		if not name or not email:
+			error = "Please check your entires"
+			if not phone_number.isdigit():
+				error = "Please enter a valid Phone Number"
+		user_reg = User(name,phone_number,email,address,table)
+		db.session.add(user_reg)
+		db.session.commit()
+		flash('Registration Successfull.')
+	return render_template('home.html',error = error)
 	return render_template("home.html")#this is a tempalte page
 
 
@@ -53,7 +47,7 @@ def home():
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
 	error = None
-	if  request.method == 'GET':
+	if  request.method == 'POST':
 		if request.form['username'] != 'admin' or request.form['password'] != 'myAdmin':
 			error = 'Invalid login details, Please meet the Admin'
 		else:
@@ -62,9 +56,7 @@ def admin():
 			return redirect(url_for('dashboard'))
 	return render_template('admin.html', error=error)#this is a tempalte page
 
-@app.route('/registered')
-def success():
-	return render_template('success.html')#this is a tempalte page
+
 
 
 
@@ -77,7 +69,51 @@ def logout():
 # def connect_db():
 #     return sqlite.connect('posts.db')
 
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('404.html'), 404
 
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template('500.html'), 500
+
+
+@app.route('/edit', methods=['GET', 'POST'])
+def edit():
+    form = EditForm(g.user.nickname)
+    if form.validate_on_submit():
+        g.user.nickname = form.nickname.data
+        g.user.about_me = form.about_me.data
+        db.session.add(g.user)
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit'))
+    elif request.method != "POST":
+        form.nickname.data = g.user.nickname
+        form.about_me.data = g.user.about_me
+    return render_template('edit.html', form=form)
+
+@app.route('/admin_insert', methods=['GET', 'POST'])
+def insert():
+	error = None
+	if request.method == 'POST':
+		name = request.form['name']
+		phone_number = request.form['phone_number']
+		email = request.form['email']
+		address = request.form['address']
+		table = request.form['table']
+		if not name or not email:
+			error = "Please check your entires"
+			if not phone_number.isdigit():
+				error = "Please enter a valid Phone Number"
+		user_reg = User(name,phone_number,email,address,table)
+		db.session.add(user_reg)
+		db.session.commit()
+		flash('Registration Successfull.')
+	return render_template('admin_insert.html',error = error)
+	return render_template("admin_insert.html")#this is a tempalte page
 
 if __name__ == '__main__':
 	app.run(debug = True) 

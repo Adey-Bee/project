@@ -12,8 +12,6 @@
         <div class="container">
                 <div class="header col-md-12">
                     <h1><a href="/welcome">Attendance Register</a></h1>
-
-
                     <hr>
                     
                 </div>
@@ -29,12 +27,7 @@
     <div class="panel-heading">
     <h3 class="panel-title">
     <strong>Registration</strong> Form</h3>
-
-    <div class="pull-right col-md-3"><a href="/admin" class="btn btn-md btn-block btn-primary active">Login as Admin</a></div>    
-    </div>                     
-        <div class="panel-body" align="center">
-
-        <div class="col-lg pull-right">
+    <div class="col-lg pull-right">
                             {% for messages in get_flashed_messages() %}
             <span class="success">{{ messages }}</span>
             {% endfor %}
@@ -42,11 +35,10 @@
             <span class="error"><strong>Error:</strong> {{ error }}</span>
         {% endif  %}
         </div>
-
-        <p>Please note that all feilds in this form are required. All information must
-        be correct as this will be a criterial for you to enter into the event. <br>
-        Tables will be assigned Automatically, so, please choose the exact type of
-        table you would like to like to have for the event.!s
+        <div class="pull-right col-md-3"><a href="/dashboard" class="btn btn-md btn-block btn-primary active">Back to Dashboard</a></div>
+    </div>                     
+        <div class="panel-body" align="center">
+        <p>Please fill all fields. Make sure all customer's information is entered properly and accurately.
         </p>                   
         </div>    
 

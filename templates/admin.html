@@ -9,40 +9,68 @@
 <link rel="stylesheet" type="text/css" href="static/style.css">
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
-	<body class="v">
+	<body class="page-container-boxed">
 		<div class="container">
-				<div class="header col-md-12">
-					<h1><a href="/">Attendance Register</a></h1>
-					<hr>
-				</div>
-			
-				<div class="row">
-		<div class="col-md-4">
-		<form action="" method="post">
-		<fieldset>
-		<legend>Log In</legend>
-		 <div class="form-group">
-		   <input type="text" class="form-control" id="" placeholder="Username" value="{{request.form.username}}" name="username">
-		  </div>
-		 <div class="form-group">
-		    <label for="Password"></label>
-		    <input type="password" class="form-control" id="" placeholder="Password" value="{{request.form.password }}" name="password">
-		  </div>
-
-		<button class="btn btn-primary" type="submit">Submit</button>
-
-		</fieldset>
-		</form>
-		{% if error %}
-		<p class="error"><strong>Error:</strong> {{ error }}</p>
-		{% endif %}
-
-		{% for messages in get_flashed_messages() %}
-			{{ message }}
-		{% endfor %}
+			<div class="header col-md-12">
+				<h1><a href="/">Attendance Register</a></h1>
+				<hr>
+			</div>
+			<div class="login-container">
+        
+            <div class="login-box">
+               
+                <div class="login-body">
+                    <div class="login-title"><strong>Log In</strong> as Admin</div>
+                    <form action="index.html" class="form-horizontal" method="post">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" placeholder="Username"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="password" class="form-control" placeholder="Password"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-link btn-block">Forgot your password?</a>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-info btn-block">Log In</button>
+                        </div>
+                    </div>
+                    <div class="login-or">OR</div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <button class="btn btn-info btn-block btn-twitter"><span class="fa fa-twitter"></span> Twitter</button>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-info btn-block btn-facebook"><span class="fa fa-facebook"></span> Facebook</button>
+                        </div>
+                        <div class="col-md-4">                            
+                            <button class="btn btn-info btn-block btn-google"><span class="fa fa-google-plus"></span> Google</button>
+                        </div>
+                    </div>
+                    <div class="login-footer">
+                    <div class="pull-left">
+                         &copy; 2015 Andela Class X 
+                    </div>
+                    <div class="pull-right">
+                        <a href="#">About</a> |
+                        <a href="#">Privacy</a> |
+                        <a href="#">Contact Us</a>
+                    </div>
+                    </form>
+                </div>
+                
+                </div>
+            </div>
+            
+        </div>
 		</div>
-		</div>
-		</div>
+		
+
 </body>
 <script src="static/bootstrap.min.js"></script>
 </html>
