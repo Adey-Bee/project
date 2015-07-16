@@ -39,6 +39,11 @@ def login_required(f):
 def dashboard():
 	users = db.session.query(User).order_by(User.name)
 	return render_template("dashboard.html", users=users)#this is a tempalte page
+@app.route('/search')
+@login_required
+def search():
+	users = db.session.query(User).filter_by(id)
+	return render_template("search.html", users=users)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -93,23 +98,22 @@ def internal_error(error):
     db.session.rollback()
     return render_template('500.html'), 500
 
-@app.route('/edit.<id>', methods=['POST', 'GET'])
+@app.route('/edit/<id>', methods=['POST', 'GET'])
 @login_required
 def edit (id):
     #Getting user by primary key:
     users = User.query.get(id)
     if request.method == 'POST':		
-		name = request.form['name']
-		phone_number = request.form['phone_number']
-		email = request.form['email']
-		address = request.form['address']
-		table = request.form['table']
-		user_reg = User(name,phone_number,email,address,table)
-		db.session.update(user_reg)
+		users.name = request.form['name']
+		users.phone_number = request.form['phone_number']
+		users.email = request.form['email']
+		users.address = request.form['address']
+		users.table = request.form['table']
+		db.session.add(users)
 		db.session.commit()
 		flash ('Edited')
 		return  redirect(url_for('dashboard'))
-    return render_template('edit.html', users=users)
+    return render_template('edit.html', users=users, id=id)
 
 @app.route('/delete/<id>' , methods=['POST', 'GET'])
 @login_required
