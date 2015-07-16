@@ -54,10 +54,10 @@ def home():
 		email = request.form['email']
 		address = request.form['address']
 		table = request.form['table']
-		if not name or not email:
-			error = "Please check your entires"
-			if not phone_number.isdigit():
-				error = "Please enter a valid Phone Number"
+		# if not name or not email:
+		# 	error = "Please check your entires"
+		# 	if not phone_number.isdigit():
+		# 		error = "Please enter a valid Phone Number"
 		user_reg = User(name,phone_number,email,address,table)
 		db.session.add(user_reg)
 		db.session.commit()
