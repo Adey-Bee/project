@@ -1,11 +1,11 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-<title>:::: New Registration ::::</title>
+<title>:::: Edit Registration ::::</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css"> -->
 <link rel="stylesheet" type="text/css" href="static/style.css">
 </head>
     <body class="page-container-boxed">
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-12">
                 
-                <form class="form-horizontal" method="post" action="/admin_insert">
+                <form class="form-horizontal" method="post" action="/edit.<id>">
     <div class="panel panel-default"> 
     <div class="panel-heading">
     <h3 class="panel-title">
@@ -43,7 +43,7 @@
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-user"></span></span>
-                                    <input type="text" class="form-control" required  name ="name" />
+                                    <input type="text" class="form-control" required  name ="name" value="{{users.name}}" />
                                 </div>                                            
                                 <span class="help-block">Your Firstname and Lastname is Requred</span>
                             </div>
@@ -54,7 +54,7 @@
                             <div class="col-md-6 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-phone"></span></span>
-                                    <input type="number" class="form-control" required  name ="phone_number"/>
+                                    <input type="number" class="form-control" required  name ="phone_number" value="{{users.phone_number}}" />
                                 </div>            
                                 <span class="help-block">Please Enter a Valid Phone Number</span>
                             </div>
@@ -65,7 +65,7 @@
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-envelope-o"></span></span>
-                                    <input type="email" class="form-control" required  name="email" />
+                                    <input type="email" class="form-control" required  name="email" value="{{users.email}}" />
                                 </div>                                            
                                 <span class="help-block">A Valid Email is Required</span>
                             </div>
@@ -76,7 +76,7 @@
                             <div class="col-md-6 col-xs-12">                                            
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-home"></span></span>
-                                    <input type="text" class="form-control" required  name="address" />
+                                    <input type="text" class="form-control" required  name="address" value="{{users.address}}" />
                                 </div>                                            
                                 <span class="help-block">Your Home Address</span>
                             </div>
@@ -87,7 +87,7 @@
                         <div class="form-group">
                             <label class="col-md-3 col-xs-12 control-label">Table Type</label>
                             <div class="col-md-6 col-xs-12">                                                                                            
-                                <select class="form-control select" required name="table" placeholder="Select a Table type">
+                                <select class="form-control select" required value="{{users.table}}" name="table" placeholder="Select a Table type">
                                     <option></option>
                                     <option>None</option>
                                     <option>Single's Table</option>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Attendance Register :: Login</title>
+<title>:::: Dashboard ::::</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,11 +11,15 @@
 		<div class="container">
 				<div class="pageheader col-md-12">
 
-					<h1><a href="/">Attendance Register</a></h1>
-					<hr>
-					{% for messages in get_flashed_messages() %}
-	{{ message }}
-{% endfor %}
+					<div class="header col-md-12">
+                    <div class="header col-md-12">
+                    <h1><a href="/dashboard">Andela Gala Nite</a></h1>
+                    {% for messages in get_flashed_messages() %}
+                    {{ message }}
+                      {% endfor %}
+                    <hr>
+                </div>
+		
 				</div>
 				<!-- Row for search and register -->
 <div class="row">
@@ -28,6 +32,7 @@
 <!-- register ends -->
 <!-- Search -->
 	<div class="col-md-8">
+ 
 		  <div class="form-group ">
     <label class="control-label" for="formGroupInputLarge"></label>
     <div class="col-sm-12">
@@ -40,6 +45,7 @@
   </div>
   
 	</div>
+
 	<!-- search ends -->
 </div>
 <br>
@@ -49,6 +55,7 @@
 <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><strong>Registered</strong> Users</h3>
+                                     <div class="pull-right col-md-3"><a href="/logout" class="btn btn-md btn-block btn-primary active">Logout</a></div>
                                                                     </div>
 	
 <table class="table datatable">
@@ -59,7 +66,7 @@
         <th>Email</th>
         <th>Address</th>
          <th>Table Number</th>
-        <th> ::Delete - Edit::</th>
+        <th> Mannage Reg. Lists</th>
            </tr>
 </thead>
 <tbody>	<!-- On rows -->
@@ -70,7 +77,11 @@
   <td class="">{{users.email}}</td>
   <td class="">{{users.address}}</td>
   <td class="">{{users.table}}</td>
-  <td class=""><button class="btn btn-danger  btn-md" onclick="delete_row('trow_1');"><span class="fa fa-times"></span></button><strong> - </strong><button class="btn btn-primary  btn-md"><span class="fa fa-pencil"></span></button></td>
+  <td class="">
+
+  <a class="btn btn-danger  btn-sm active" href="{{ url_for('delete', id=users.id) }}"><span class="fa fa-times"></span>Delete</a><strong> - </strong>
+
+  <a class="btn btn-primary active  btn-sm" href="{{ url_for('edit', id=users.id) }}"> <span class="fa fa-pencil"></span>Edit</a></td>
 </tr>
 {% endfor %}
 </tbody>
@@ -103,36 +114,7 @@
 <script src="static/jquery-migrate.minjs"></script>
 
 
-        <script type="text/javascript" src="static/jquery.min.js"></script>
-        <script type="text/javascript" src="static/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="static/bootstrap.min.js"></script>        
-        <!-- END PLUGINS -->
-
-        <!-- START THIS PAGE PLUGINS-->        
-        <script type='text/javascript' src='static/icheck.min.js'></script>        
-        <script type="text/javascript" src="static/jquery.mCustomScrollbar.min.js"></script>
-        <script type="text/javascript" src="static/scrolltopcontrol.js"></script>
-        
-        <script type="text/javascript" src="static/raphael-min.js"></script>
-        <script type="text/javascript" src="static/morris.min.js"></script>       
-        <script type="text/javascript" src="static/rickshaw/d3.v3.js"></script>
-        <script type="text/javascript" src="static/rickshaw.min.js"></script>
-        <script type='text/javascript' src='static/jquery-jvectormap-1.2.2.min.js'></script>
-        <script type='text/javascript' src='ststic/jquery-jvectormap-world-mill-en.js'></script>                
-        <script type='text/javascript' src='static/bootstrap-datepicker.js'></script>                
-        <script type="text/javascript" src="staticowl.carousel.min.js"></script>                 
-        
-        <script type="text/javascript" src="static/moment.min.js"></script>
-        <script type="text/javascript" src="static/daterangepicker.js"></script>
-        <!-- END THIS PAGE PLUGINS-->        
-
-        <!-- START TEMPLATE -->
-        <script type="text/javascript" src="js/settings.js"></script>
-        
-        <script type="text/javascript" src="js/plugins.js"></script>        
-        <script type="text/javascript" src="js/actions.js"></script>
-        
-        <script type="text/javascript" src="js/demo_dashboard.js"></script>
+       
 </html>
 
 <span></span>
