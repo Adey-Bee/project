@@ -1,20 +1,6 @@
- <!DOCTYPE html>
-<html>
-<head>
-<title>:::: New Registration ::::</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="static/style.css">
-</head>
-    <body class="page-container-boxed">
-        <div class="container">
-                <div class="header col-md-12">
-                    <h1><a href="/dashboard">Andela Gala Nite</a></h1>
-                    <hr>
-                </div>
-               
+{% extends "base.html" %}
+
+{% block content %}
 
  <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
@@ -133,3 +119,5 @@
             <!-- END PAGE CONTENT -->
         </div>
         <!-- END PAGE CONTAINER -->
+
+        {% endblock %}

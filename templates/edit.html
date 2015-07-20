@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>:::: Edit Registration ::::</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="stylesheet" type="text/css" href="static/bootstrap.min.css"> -->
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-</head>
-    <body class="page-container-boxed">
-        <div class="container">
-                <div class="header col-md-12">
-                    <h1><a href="/dashboard">Andela Gala Nite</a></h1>
-                    <hr>
-                </div>
-               
+{% extends "base.html" %}
 
- <!-- PAGE CONTENT WRAPPER -->
+{% block content %}
+<!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
      
         <div class="row">
@@ -74,7 +59,7 @@
                         <div class="form-group">
                             <label class="col-md-3 col-xs-12 control-label">Address</label>
                             <div class="col-md-6 col-xs-12">                                            
-                                <div class="input-group">
+                            <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-home"></span></span>
                                     <input type="text" class="form-control" required  name="address" value="{{users.address}}" />
                                 </div>                                            
@@ -86,15 +71,18 @@
                         
                         <div class="form-group">
                             <label class="col-md-3 col-xs-12 control-label">Table Type</label>
-                            <div class="col-md-6 col-xs-12">                                                                                            
-                                <select class="form-control select" required value="{{users.table}}" name="table" placeholder="Select a Table type">
-                                    <option></option>
+                            <div class="col-md-6 col-xs-12">
+                            <div class="input-group">
+                            <span class="input-group-addon"><span class="fa fa-home"></span></span>                                            
+                  <select class="form-control select" required  name="table" placeholder="Select a Table type">
+                                    <option>{{users.table}}</option>
                                     <option>None</option>
                                     <option>Single's Table</option>
                                     <option>Table for Two (2 seats)</option>
                                     <option>Family Table (5 seats)</option>
                                     <option>Grand Family Table (10 seats)</option>
                                 </select>
+                          </div>   
                                 <span class="help-block">Table Reservation</span>
                             </div>
                         </div>
@@ -109,7 +97,7 @@
 
                     </div>
                     <div class="panel-footer">
-                        <button class="btn btn-default" type="reset">Clear Form </button>
+                    
 
 
                                    {% for messages in get_flashed_messages() %}
@@ -133,3 +121,4 @@
             <!-- END PAGE CONTENT -->
         </div>
         <!-- END PAGE CONTAINER -->
+          {% endblock %}

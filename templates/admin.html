@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Attendance Register</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="static/style.css">
-<link rel="icon" href="favicon.ico" type="image/x-icon" />
-</head>
-	<body class="page-container-boxed">
-		<div class="container">
-			<div class="header col-md-12">
-                    <h1><a href="/admin">Andela Gala Nite</a></h1>
-                    <hr>
-                </div>
+{% extends "base.html" %}
+{% block content %}
 			<div class="login-container">
         
             <div class="login-box">
@@ -40,26 +25,15 @@
                             <button class="btn btn-info btn-block" type="submit">Log In</button>
                         </div>
                     </div>
-                   <!--  <div class="login-or">OR</div> -->
-                  <!--   <div class="form-group">
-                        <div class="col-md-4">
-                            <button class="btn btn-info btn-block btn-twitter"><span class="fa fa-twitter"></span> Twitter</button>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-info btn-block btn-facebook"><span class="fa fa-facebook"></span> Facebook</button>
-                        </div>
-                        <div class="col-md-4">                            
-                            <button class="btn btn-info btn-block btn-google"><span class="fa fa-google-plus"></span> Google</button>
-                        </div>
-                    </div> -->
                     <div class="login-footer">
                     <div class="pull-left">
                          &copy; 2015 Andela Class X 
                     </div>
                     <div class="pull-right">
-                        <a href="#">About</a> |
-                        <a href="#">Privacy</a> |
-                        <a href="#">Contact Us</a>
+                    	{% for messages in get_flashed_messages() %}
+			            <span class="success">{{ messages }}</span>
+			            {% endfor %}
+			            {% if error %}
                     </div>
                     </form>
                 </div>
@@ -67,10 +41,8 @@
                 </div>
             </div>
             
+            <span class="error"><strong>Error:</strong> {{ error }}</span>
+        {% endif  %}
         </div>
 		</div>
-		
-
-</body>
-<script src="static/bootstrap.min.js"></script>
-</html>
+	{% endblock %}

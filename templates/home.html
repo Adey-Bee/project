@@ -1,19 +1,6 @@
- <!DOCTYPE html>
-<html>
-<head>
-<title>:::: Andela Gala Nite ::::</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="static/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="static/style.css">
-</head>
-    <body class="page-container-boxed">
-        <div class="container">
-                <div class="header col-md-12">
-                    <h1><a href="/home">Andela Gala Nite</a></h1>
-                    <hr>
-                </div>
+{% extends "base.html" %}
+
+{% block content %}
  <!-- PAGE CONTENT WRAPPER -->
 <div class="page-content-wrap">
     
@@ -31,12 +18,7 @@
         <div class="panel-body" align="center">
 
         <div class="col-lg pull-right">
-        {% for messages in get_flashed_messages() %}
-            <span class="success">{{ messages }}</span>
-            {% endfor %}
-            {% if error %}
-            <span class="error"><strong>Error:</strong> {{ error }}</span>
-        {% endif  %}
+        
         </div>
 
         <p>Please note that all feilds in this form are required. All information must
@@ -45,6 +27,17 @@
         table you would like to like to have for the event.!s
         </p>                   
         </div>    
+
+<!--Alerts-->
+        {% for messages in get_flashed_messages() %}
+            <span class="success">{{ messages }}</span>
+            {% endfor %}
+            {% if error %}
+            <span class="error"><strong>Error:</strong> {{ error }}</span>
+        {% endif  %}
+
+
+
 
                          <div class="panel-body">
 
@@ -134,3 +127,5 @@
             <!-- END PAGE CONTENT -->
         </div>
         <!-- END PAGE CONTAINER -->
+
+        {% endblock %}
